@@ -10,7 +10,10 @@ find_package(FUSE REQUIRED)
 include_directories(./inc)
 include_directories(${FUSE_INCLUDE_DIRS})
 
-add_library(ffs_common SHARED src/ffs_common.c inc/ffs_common.h)
+add_library(ffs_common SHARED src/ffs_common.c inc/ffs_common.h inc/ffs.h)
 
 add_executable(mkfs.ffs src/ffs_mkfs.c inc/ffs_mkfs.h inc/ffs.h)
 target_link_libraries(mkfs.ffs ${FUSE_LIBRARIES} ffs_common)
+
+add_executable(ffs src/ffs_main.c src/ffs_fuse.c inc/ffs_fuse.h)
+target_link_libraries(ffs ${FUSE_LIBRARIES} ffs_common)
