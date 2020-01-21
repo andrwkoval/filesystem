@@ -94,7 +94,7 @@ void ffs_write_bgd_table(int fd, uint64_t bgn, uint64_t bgdt_blocks) {
 
     for (uint64_t i = 0; i < bgn; ++i) {
         static ffs_bgd_t bgd;
-        bgd.bgd_block_bitmap = i == 0 ? 1 + bgdt_blocks : i * FFS_BLOCKSIZE;
+        bgd.bgd_block_bitmap = i == 0 ? 1 + bgdt_blocks : i * FFS_BLOCKS_PER_GROUP;
         bgd.bgd_inode_bitmap = bgd.bgd_block_bitmap + 1;
         bgd.bgd_inode_table = bgd.bgd_inode_bitmap + 1;
         bgd.bgd_free_blocks_count = i == 0 ? FFS_BLOCKS_PER_GROUP - 4 - FFS_INODE_TABLE_BLOCKS - bgdt_blocks : FFS_BLOCKS_PER_GROUP - 2 - FFS_INODE_TABLE_BLOCKS;
