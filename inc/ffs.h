@@ -79,7 +79,7 @@ typedef struct ffs_block_group {
 } ffs_bg_t;
 
 #define FFS_DIR_ENTRY_RECORD_LENGTH 256
-#define FFS_FILENAME_MAX_LENGTH 248
+#define FFS_FILENAME_MAX_LENGTH 247
 
 typedef struct ffs_dir_entry {
     uint32_t de_inode;
